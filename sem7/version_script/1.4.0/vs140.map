@@ -1,0 +1,10 @@
+VER_1_3_0 {
+    global:
+        sin207;
+        cos207;
+    local:
+        *;
+};
+
+VER_1_4_0 {
+} VER_1_3_0;
