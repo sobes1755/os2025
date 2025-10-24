@@ -29,16 +29,14 @@ See https://en.wikipedia.org/wiki/Dining_philosophers_problem
 #include "gettime.h"
 #include "swap.h"
 
-#include <getopt.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sched.h>
-#include <pthread.h>
-#include <unistd.h>
 #include <errno.h>
-#include <stdint.h>
-#include <string.h>
+#include <getopt.h>
 #include <math.h>
+#include <pthread.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 
 static int QTTY = 5; // Quantity of philosophers
 static double TTT = 0.2; // Thinking time in seconds
@@ -410,7 +408,7 @@ main(int argc, char *argv[])
     // Printing threads (except main threads) timing...
 
     for (int i = 0; i < QTTY; ++i) {
-        printf("Thread %d: cpu time %f s, time %f s (thought %.2f %%, ate %.2f %%, other %.2f %%)\n",
+        printf("Thread %d: cpu time %f s, time %f s (thought %.2f %%, ate %.2f %%, other %.2f %%).\n",
             i + 1, cpu[i], live[i],
             think[i] / live[i] * 100,
             eat[i] / live[i] * 100,
@@ -426,7 +424,7 @@ main(int argc, char *argv[])
         eat[0] += eat[i];
     }
 
-    printf("Threads: cpu time %f s, time %f s (thought %.2f %%, ate %.2f %%, other %.2f %%)\n",
+    printf("Threads: cpu time %f s, time %f s (thought %.2f %%, ate %.2f %%, other %.2f %%).\n",
             cpu[0], live[0],
             think[0] / live[0] * 100,
             eat[0] / live[0] * 100,
