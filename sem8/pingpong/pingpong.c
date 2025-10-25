@@ -150,7 +150,7 @@ main(int argc, char *argv[])
         }
     }
 
-    // Allocating some heap...
+    // Allocating and initializing...
 
     if (! (thread = calloc(qtty, sizeof(*thread)))) {
         perror("Calloc for threead failed");
@@ -204,7 +204,18 @@ main(int argc, char *argv[])
         }
     }
 
-    // Deallocating...
+    // Destroying and deallocating...
+
+    for (int i = 0; i < qtty; ++i) {
+        if (pthread_mutex_destroy(mutex + i) != 0) {
+            perror("Pthread_mutex_destroy failed");
+            return EXIT_FAILURE;
+        }
+        if (pthread_cond_destroy(cond + i) != 0) {
+            perror("Pthread_cond_destroy failed");
+            return EXIT_FAILURE;
+        }
+    }
 
     free(play);
     free(mutex);
