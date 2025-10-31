@@ -49,6 +49,8 @@ main(void)
 
         printf("Fork failed: errno = %d, errmsg = %s!\n", errno, strerror(errno));
 
+	return EXIT_FAILURE;
+
     }
 
     return EXIT_SUCCESS;
